@@ -1,0 +1,22 @@
+[Unit]
+Description=Cloudflare AbuseIPDB IP Reputation Worker
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=ip-reputation
+Group=ip-reputation
+WorkingDirectory=/opt/cloudflare-abuseipdb-blocker
+ExecStart=/opt/cloudflare-abuseipdb-blocker/.venv/bin/python -m app.main
+Environment=PYTHONPATH=/opt/cloudflare-abuseipdb-blocker
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ReadWritePaths=/opt/cloudflare-abuseipdb-blocker/data
+ReadOnlyPaths=/var/log/nginx
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
