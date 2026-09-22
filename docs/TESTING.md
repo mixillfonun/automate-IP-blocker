@@ -2,26 +2,22 @@
 
 ## Automated test suite
 
-The clean repository includes the seven deterministic test modules that produced the production validation count of 51 tests:
+The repository includes five deterministic test modules:
 
 | Module | Tests |
 |---|---:|
-| `test_abuseipdb.py` | 6 |
-| `test_cloudflare_client.py` | 12 |
 | `test_decision.py` | 5 |
 | `test_lifecycle.py` | 5 |
 | `test_main.py` | 7 |
 | `test_nginx.py` | 8 |
 | `test_storage.py` | 8 |
-| **Total** | **51** |
+| **Total** | **33** |
 
 All external service behavior is mocked in these tests.
 
-## What is intentionally not collected
+## Manual tests
 
-The original production archive contained several top-level scripts named `test_*.py` that perform live API calls, write fixed production-path SQLite files, or depend on the production Nginx log. They are not suitable for normal CI collection.
-
-The clean repository removes those scripts from the default test tree rather than silently changing their behavior.
+Live API tests that require real credentials are kept in `tests/manual/` and are not part of the default test collection.
 
 ## Test command
 

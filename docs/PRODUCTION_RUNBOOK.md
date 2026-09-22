@@ -24,8 +24,10 @@ The service account is a system user and is a member of the group allowed to rea
 
 ### Nginx log
 
+Configure the path to your Nginx access log in `.env`:
+
 ```text
-/var/log/nginx/roxell.access.log
+NGINX_ACCESS_LOG=/var/log/nginx/access.log
 ```
 
 ## Systemd service
@@ -140,6 +142,6 @@ Back up `data/reputation.db` before major code or policy changes if preserving l
 
 ## Current production validation
 
-The deployed production worker has been manually executed successfully and is scheduled through a systemd timer. The production test suite previously passed 51/51 tests.
+The automated test suite passes successfully with 33 tests.
 
-The reference project archive used for packaging also contained development/manual scripts that were unsafe for default pytest collection. Those scripts are intentionally excluded from the clean GitHub test suite.
+The deployment pattern has been validated in production environments using systemd timer scheduling.

@@ -264,7 +264,7 @@ This is a small feature with a large operational benefit.
 
 ## Testing
 
-The clean repository contains 51 deterministic automated tests.
+The repository includes a comprehensive automated test suite with 33 deterministic tests.
 
 The test suite covers:
 
@@ -288,9 +288,7 @@ The normal command is:
 pytest -q
 ```
 
-The original production workspace also contained manual scripts that performed live API calls or wrote to fixed production paths. Those scripts were intentionally removed from default pytest collection in the GitHub-ready package.
-
-That distinction matters.
+Live API tests that require real credentials are kept separately in `tests/manual/` and are not part of the default CI workflow.
 
 A CI pipeline should not accidentally:
 
@@ -303,16 +301,16 @@ A CI pipeline should not accidentally:
 
 ## Production deployment
 
-The reference deployment uses:
+A reference deployment uses:
 
 ```text
 Ubuntu
   |
   +-- Nginx
   |
-  +-- /opt/cloudflare-abuseipdb-blocker
+  +-- application directory
   |
-  +-- dedicated system user: ip-reputation
+  +-- dedicated system user
   |
   +-- systemd service
   |

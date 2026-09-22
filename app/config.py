@@ -54,12 +54,12 @@ def load_settings() -> Settings:
 
         nginx_access_log=os.getenv(
             "NGINX_ACCESS_LOG",
-            "/var/log/nginx/roxell.access.log",
+            "/var/log/nginx/access.log",
         ),
 
         sqlite_path=os.getenv(
             "SQLITE_PATH",
-            "/opt/cloudflare-abuseipdb-blocker/data/reputation.db",
+            "./data/reputation.db",
         ),
 
         block_threshold=int(
